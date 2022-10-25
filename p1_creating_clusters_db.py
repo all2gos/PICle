@@ -1,4 +1,4 @@
-from usable_data import *
+from p0_usable_data import *
 from itertools import combinations
 
 #function that translate some rotation in numerical notation into one-dimensional Cu-Ni notation in correct order
@@ -82,6 +82,6 @@ def compute(a,b):
     clusters = normalize_db(clusters)
     return clusters
 
-clusters = compute(0,7)
+
 
 
