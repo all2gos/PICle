@@ -39,7 +39,7 @@ def generating_clusters(number_of_nickel):
     return possibilities
 
 #function that create all possible clusters from a to b number of nickel
-def creating_list_of_all_clusters(a,b):
+def creating_list_of_all_clusters(a=0,b=7):
     clusters = []
     for number_of_nickel in range(a,b):
         possibilities = generating_clusters(number_of_nickel)
@@ -75,7 +75,7 @@ def normalize_db(clusters):
     print('new db is identical as old db:',correct_clusters == old_list_of_clusters)
     return correct_clusters
 
-def compute(a,b):
+def compute(a=0,b=7):
     r_clusters = reverse_atoms_in_cluster(creating_list_of_all_clusters(a,b))
     clusters = creating_list_of_all_clusters(a,b)
     clusters += r_clusters

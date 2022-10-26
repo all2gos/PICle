@@ -1,3 +1,4 @@
+from p0_usable_data import edges
 #simple function that returns all neighbour location of given atom (with or without centre atom)
 def neighbour(atom, centre = False):
     #atoms are returns in correct order - that mean that 
@@ -82,3 +83,49 @@ def neighbour_list(cluster):
         neighbours.append(intra_neighbour_list)
     return neighbours
 
+#function that return all possible, independent ways of spot to the corners particle joining
+def corners(neighbour_list):
+    
+    #i made a returning list, I put into them first element beacause I use lenght of that list later
+    combinations_c = [[1, 1, 1]]
+    
+    for i in range(len(neighbour_list)):        
+             
+        counter = 0
+        
+        #[10, 1, 4, 'Cu'] and [11, 1, 4, 'Cu'] are different atoms but particle will be joining in the same way
+        for j in range(len(combinations_c)):
+            if neighbour_list[i][1:] == combinations_c[j][1:]:
+                counter+=1
+                break
+            
+        if counter == 0:
+            combinations_c.append(neighbour_list[i])
+   
+    return combinations_c[1:]
+
+#function that return all possible, independent ways of spot to the corners particle joining
+def edge(neighbour_list):
+
+    #I made here pairs of edges with neighbour information
+    pairs = [] 
+    for pairs_of_edges in edges:
+        pair = []
+        pair.append(neighbour_list[pairs_of_edges[0]-1])
+        pair.append(neighbour_list[pairs_of_edges[1]-1]) 
+        pairs.append(pair)
+
+    #i made a returning list, I put into them first element beacause I use lenght of that list later 
+    combinations_e = [[[1, 1, 1, 1],[1,1,1,1]]]
+           
+    #I need to check either [1,4,Ni,0,5,Cu] or [0,5,Cu,1,4,Ni] are in list of results
+    for i in range(len(pairs)):
+        counter = 0
+        for j in range(len(combinations_e)):
+            if pairs[i][0][1:]+pairs[i][1][1:] == combinations_e[j][0][1:] + combinations_e[j][1][1:]:
+                counter += 1                
+            elif pairs[i][1][1:] + pairs[i][0][1:] == combinations_e[j][0][1:] + combinations_e[j][1][1:]:
+                counter += 1
+        if counter == 0:
+            combinations_e.append(pairs[i])
+    return combinations_e[1:]
