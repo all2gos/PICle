@@ -27,6 +27,8 @@ def neighbor(atom, centre = False):
         neight_list = [0, 12, 7, 6, 5, 10]
     elif atom==12:
         neight_list = [0, 10, 9, 8, 7, 11]
+    elif atom ==0:
+        neight_list = ['*',1,2,3,4,5,6,7,8,9,10,11,12]
     if centre == False:
         neight_list = neight_list[1:]
         return neight_list
