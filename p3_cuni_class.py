@@ -1,4 +1,5 @@
 from p2_particle_joining import edge, corners, neighbor_list
+from p4_mass_center import mass_center
 class CuNi_cluster():
     def __init__(self, topology):
         self.topology = topology
@@ -24,6 +25,9 @@ class CuNi_cluster():
     def edges(self,topology):
         return edge(neighbor_list(topology))
 
+    def mass_center(self, topology):
+        return mass_center(topology)
+
     def creating_db_row(self,topology):
         db_row = [] 
         db_row.append(CuNi_cluster(topology).no_nickel(topology))
@@ -34,6 +38,7 @@ class CuNi_cluster():
         db_row.append(CuNi_cluster(topology).corners(topology))
         db_row.append(CuNi_cluster(topology).edges(topology))
         db_row.append(CuNi_cluster(topology).centre_atom(topology))
+        db_row.append(f"{CuNi_cluster(topology).mass_center(topology):.4}")
 
         return db_row
 
