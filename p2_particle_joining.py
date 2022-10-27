@@ -1,8 +1,8 @@
 from p0_usable_data import edges
-#simple function that returns all neighbour location of given atom (with or without centre atom)
-def neighbour(atom, centre = False):
-    #atoms are returns in correct order - that mean that 
-    #for example atom number 1 has 5 neighbours: 2,3,4,5,6 AND for example atom 4 is neighbour of atom 5 and 3
+#simple function that returns all neighbor locations of a given atom (with or without center atom)
+def neighbor(atom, centre = False):
+    #atoms are returned in the correct order - that means that 
+    #for example atom number 1 has 5 neighbors: 2,3,4,5,6 AND for example atom 4 is a neighbor of atoms 5 and 3
     if atom==1:
         neight_list = [0, 2, 3, 4, 5, 6]
     elif atom==2:
@@ -33,89 +33,91 @@ def neighbour(atom, centre = False):
     else:
         return neight_list
 
-#function that analyse neughbourhood of all atom in cluster, function returned information in a list for example [1,2.1,3,Cu] means
-#that atom number 1 is cooper with 2 nickel (.1 inform that beetween these nickels one another cooper are present) 
-#neghbour and 3 other cooper neighbour
-def neighbour_list(cluster):  
+#function that analyses the neighborhood of all atoms in cluster, the function returned information in a list for example [1,2.1,3,Cu] means
+#that atom number 1 is cooper with 2 nickel (.1 inform that between these nickels one another cooper are present) 
+#neghbour and 3 other cooper neighbor
+
+def neighbor_list(cluster):  
     
     variant_point_one = [[0,2],[1,3],[2,4],[0,3],[1,4],[1,3,4],[0,2,4],[0,1,3],[1,2,4],[0,2,3]]
+
     #final list
-    neighbours = []
+    neighbors = []
     
     for atom_in_cluster in range(12):        
         
-        intra_neighbour_list = []
+        intra_neighbor_list = []
         ni = 0
         cu = 0 
         for neight_atom in range(5):
             
-            #scanning all neighbour atoms and categorizing them into ni or cu variable
-            if cluster[neighbour(atom_in_cluster + 1)[neight_atom]] == 'Ni':
+            #scanning all neighbor atoms and categorizing them into ni or cu variable
+            if cluster[neighbor(atom_in_cluster + 1)[neight_atom]] == 'Ni':
                 ni += 1
             else:
                 cu += 1 
 
         if ni == 2 or ni ==3:
             
-            #list where I put position of nickel atom
+            #list where I put the position of the nickel atom
             ni_coordinates = []
             for k in range(5):
-                if cluster[neighbour(atom_in_cluster + 1)[k]] == 'Ni':                    
+                if cluster[neighbor(atom_in_cluster + 1)[k]] == 'Ni':                    
                     ni_coordinates.append(k)  
         
-        #convention is that I need to add information about number of atom just now
-        intra_neighbour_list.append(atom_in_cluster + 1) 
+        #convention is that I need to add information about the number of the atom just now
+        intra_neighbor_list.append(atom_in_cluster + 1) 
 
-        #checking if analyzing situation is 2.1         
+        #checking if the analyzing situation is 2.1         
         try:
             if sorted(ni_coordinates) in variant_point_one and (ni ==2 or ni ==3):
-                intra_neighbour_list.append(ni+0.1)
+                intra_neighbor_list.append(ni+0.1)
             else:
-                intra_neighbour_list.append(ni) 
+                intra_neighbor_list.append(ni) 
         except:
-            intra_neighbour_list.append(ni)            
-        intra_neighbour_list.append(cu)
+            intra_neighbor_list.append(ni)            
+        intra_neighbor_list.append(cu)
         
         if cluster[atom_in_cluster + 1] == 'Ni':
-            intra_neighbour_list.append('Ni')
+            intra_neighbor_list.append('Ni')
         else:
-            intra_neighbour_list.append('Cu')   
-        neighbours.append(intra_neighbour_list)
-    return neighbours
+            intra_neighbor_list.append('Cu')   
+        neighbors.append(intra_neighbor_list)
+    return neighbors
 
-#function that return all possible, independent ways of spot to the corners particle joining
-def corners(neighbour_list):
+#function that returns all possible, independent ways of the spot to the corners particle joining
+def corners(neighbor_list):
     
-    #i made a returning list, I put into them first element beacause I use lenght of that list later
+    #I made a returning list, I put it into them first element because I use the lenght of that list later
     combinations_c = [[1, 1, 1]]
     
-    for i in range(len(neighbour_list)):        
+    for i in range(len(neighbor_list)):        
              
         counter = 0
         
-        #[10, 1, 4, 'Cu'] and [11, 1, 4, 'Cu'] are different atoms but particle will be joining in the same way
+        #[10, 1, 4, 'Cu'] and [11, 1, 4, 'Cu'] are different atoms but particles will be joining in the same way
         for j in range(len(combinations_c)):
-            if neighbour_list[i][1:] == combinations_c[j][1:]:
+            if neighbor_list[i][1:] == combinations_c[j][1:]:
                 counter+=1
                 break
             
         if counter == 0:
-            combinations_c.append(neighbour_list[i])
+            combinations_c.append(neighbor_list[i])
    
     return combinations_c[1:]
 
-#function that return all possible, independent ways of spot to the corners particle joining
-def edge(neighbour_list):
+#function that returns all possible, independent ways of the spot to the edges particle joining
+def edge(neighbor_list):
 
-    #I made here pairs of edges with neighbour information
+    #I made here pairs of edges with neighbor information
     pairs = [] 
     for pairs_of_edges in edges:
         pair = []
-        pair.append(neighbour_list[pairs_of_edges[0]-1])
-        pair.append(neighbour_list[pairs_of_edges[1]-1]) 
+        pair.append(neighbor_list[pairs_of_edges[0]-1])
+        pair.append(neighbor_list[pairs_of_edges[1]-1]) 
         pairs.append(pair)
 
-    #i made a returning list, I put into them first element beacause I use lenght of that list later 
+    #I made a returning list, I put it into them first element because I use the length of that list later 
     combinations_e = [[[1, 1, 1, 1],[1,1,1,1]]]
            
     #I need to check either [1,4,Ni,0,5,Cu] or [0,5,Cu,1,4,Ni] are in list of results
