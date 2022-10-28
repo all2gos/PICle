@@ -1,6 +1,6 @@
 from p0_usable_data import edges
 #simple function that returns all neighbor locations of a given atom (with or without center atom)
-def neighbor(atom, centre = False):
+def neighbor(atom, center = False):
     #atoms are returned in the correct order - that means that 
     #for example atom number 1 has 5 neighbors: 2,3,4,5,6 AND for example atom 4 is a neighbor of atoms 5 and 3
     if atom==1:
@@ -28,8 +28,8 @@ def neighbor(atom, centre = False):
     elif atom==12:
         neight_list = [0, 10, 9, 8, 7, 11]
     elif atom ==0:
-        neight_list = ['*',1,2,3,4,5,6,7,8,9,10,11,12]
-    if centre == False:
+        return [0,1,2,3,4,5,6,7,8,9,10,11,12]
+    if center == False:
         neight_list = neight_list[1:]
         return neight_list
     else:

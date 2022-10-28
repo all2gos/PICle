@@ -1,5 +1,8 @@
+from p1_creating_clusters_db import compute
 from p2_particle_joining import edge, corners, neighbor_list
 from p4_mass_center import mass_center
+from p5_pathways import *
+
 class CuNi_cluster():
     def __init__(self, topology):
         self.topology = topology
@@ -28,6 +31,9 @@ class CuNi_cluster():
     def mass_center(self, topology):
         return mass_center(topology)
 
+    def pathways(self, topology):
+        return (scanning_cluster(topology,'Ni'), scanning_cluster(topology,'Ni',True),scanning_cluster(topology,'Cu'), scanning_cluster(topology,'Cu',True))
+
     def creating_db_row(self,topology):
         db_row = [] 
         db_row.append(CuNi_cluster(topology).no_nickel(topology))
@@ -39,8 +45,14 @@ class CuNi_cluster():
         db_row.append(CuNi_cluster(topology).edges(topology))
         db_row.append(CuNi_cluster(topology).centre_atom(topology))
         db_row.append(f"{CuNi_cluster(topology).mass_center(topology):.4}")
+        db_row.append(CuNi_cluster(topology).pathways(topology))
 
         return db_row
 
-if __name__ == '__main__':
-    print(CuNi_cluster(['Cu', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Cu', 'Cu']).creating_db_row(['Cu', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Cu', 'Cu']))
+
+if __name__ == '__main__': 
+    topology_of_clusters = compute()
+    clusters = []
+    for cluster in topology_of_clusters[52:55]:
+        clusters.append(CuNi_cluster(cluster).creating_db_row(cluster))
+print(clusters)
