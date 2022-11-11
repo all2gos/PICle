@@ -1,7 +1,6 @@
 from p2_particle_joining import edge, corners, neighbor_list
-from p4_mass_center import mass_center
+from p4_mcenter_conf_bonds import mass_center, fully_description_of_bonds, average_dist, conformation_number
 from p5_pathways import *
-from p6_conf_and_bonds import *
 
 class CuNi_cluster():
     def __init__(self, topology):
@@ -46,7 +45,7 @@ class CuNi_cluster():
         db_row.append(CuNi_cluster(topology).name(topology))
         db_row.append(len(CuNi_cluster(topology).corners(topology)))
         db_row.append(len(CuNi_cluster(topology).edges(topology)))
-        db_row.append(2*db_row[-1]+9*db_row[-2])
+        db_row.append(2*db_row[-1]+3*db_row[-2])
         db_row.append(CuNi_cluster(topology).corners(topology))
         db_row.append(CuNi_cluster(topology).edges(topology))
         db_row.append(CuNi_cluster(topology).centre_atom(topology))
