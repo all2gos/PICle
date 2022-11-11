@@ -7,7 +7,7 @@ def creating_df():
     clusters = []
     for cluster in topology_of_clusters:
         clusters.append(CuNi_cluster(cluster).creating_db_row(cluster))
-        print(cluster)
+        print(len(clusters))
     clusters_df = pd.DataFrame(data = clusters, columns = ['no_nickel','topology','no_corners_comb','no_edges_comb','all_comb','all_corners_comb','all_edges_comb','c_atom','mass_center','shortest_paths','conformation','bonds'])
     clusters_df.to_csv('all.csv')
     print(clusters_df.info())    
