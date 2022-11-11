@@ -36,10 +36,10 @@ def cord_of_particle(no_cluster, type_of_connection):
 #MC, MO. MOC --> corners 
 #MOC_, MOCM, MOCM_H_bond, MOCM_H_n_bond, MOCOM, MCMH, MCMH_p, MCM_p --> edges
 
-generating_cluster = [92]
-generating_particle =['MOCOM']
+generating_cluster = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133]
+generating_particle =['MOCOM','MO']
 sp_or_opt = 'sp'
-rot_input = 'n'
+rot_input = 'y'
 pwd = os.getcwd() 
 try:
     os.chdir(pwd+ '\\clusters')
@@ -63,8 +63,7 @@ for particle in generating_particle:
 
         if sp_or_opt == 'sp':
             added_particle = cord_of_particle(cluster,particle)
-            print(added_particle)
-
+                        
         elif sp_or_opt == 'opt':
             for type_of_particle in particle_cor_opt:
                 if type_of_particle[0] == particle:
@@ -81,8 +80,7 @@ for particle in generating_particle:
 
         for case in range(range_of_for):
             name_of_dir = str(cluster) + '_' + particle + '_' + str(possible_rotations[case][1]) + '_' + str(possible_rotations[case][2])     
-            os.mkdir(name_of_dir)    
-            print(os.getcwd())     
+            os.mkdir(name_of_dir)  
 
             #first input file - INCAR
             shutil.copyfile(r''+pwd+'\INCAR', r''+pwd+ '\clusters\\' +name_of_dir+'\INCAR')
