@@ -21,7 +21,18 @@ def cord_of_particle(no_cluster, type_of_connection):
         
         ni_cord = clear_Ni_MOCOM_opt[-4:]
         cu_cord = clear_Cu_MOCOM_opt[-4:]
-            
+
+    elif type_of_connection == 'MOCM_H_n_bond':
+        ni_cord = clear_Ni_MOCM_H_n_bond_opt[-4:]
+        cu_cord = clear_Cu_MOCM_H_n_bond_opt[-4:]
+
+    elif type_of_connection == 'MOCM':
+        ni_cord = clear_Ni_MOCM_opt[-3:]
+        cu_cord = clear_Cu_MOCM_opt[-3:]
+
+    elif type_of_connection == 'MC':
+        ni_cord = clear_Ni_MC_opt[-4:]
+        cu_cord = clear_Cu_MC_opt[-4:]
     final_cord = []
 
         
@@ -33,11 +44,14 @@ def cord_of_particle(no_cluster, type_of_connection):
 
     return final_cord
 
-#MC, MO. MOC --> corners 
+#MC, MO. MOC --> corners // 
 #MOC_, MOCM, MOCM_H_bond, MOCM_H_n_bond, MOCOM, MCMH, MCMH_p, MCM_p --> edges
 
-generating_cluster = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133]
-generating_particle =['MOCOM','MO']
+#MO, MOCOM, MOCM_H_n_bond, MC, MOCM --> final analyzed cases
+
+
+generating_cluster = [191,190,186,180,181,165,146,72,45,44,20,10,4,2,0]
+generating_particle =['MOCM_H_n_bond','MOCOM','MOCM']
 sp_or_opt = 'sp'
 rot_input = 'y'
 pwd = os.getcwd() 
@@ -52,6 +66,11 @@ for particle in generating_particle:
         passed_rotations = []
         if particle in ['MC','MO','MOC']:
             possible_rotations = rotation(cluster)[2]
+
+        #unsymetrically cases
+        elif particle in ['MOCM_H_n_bond','MOCM']:
+            possible_rotations = rotation(cluster)[0] + rotation(cluster)[1]
+        #symetrically cases
         else:
             possible_rotations = rotation(cluster)[0]
         
