@@ -131,3 +131,7 @@ dmypy.json
 INCAR
 PSEUDO
 cleaning.py
+clusters
+benchmark_ds.csv
+*model*
+*.png
