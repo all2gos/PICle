@@ -90,7 +90,7 @@ def mass_center(cluster):
     vector.append(vector_y/mass_sum)
     vector.append(vector_z/mass_sum)
     
-    return np.sqrt((vector[0]-cluster_cor[11][0])**2+(vector[1]-cluster_cor[11][1])**2+(vector[2]-cluster_cor[11][2])**2)
+    return np.sqrt((vector[0]-cluster_cor[0][0])**2+(vector[1]-cluster_cor[0][1])**2+(vector[2]-cluster_cor[0][2])**2)
 
 
 if __name__ == '__main__':
