@@ -50,8 +50,8 @@ def cord_of_particle(no_cluster, type_of_connection):
 #MO, MOCOM, MOCM_H_n_bond, MC, MOCM --> final analyzed cases
 
 
-generating_cluster = [191,190,186,180,181,165,146,72,45,44,20,10,4,2,0]
-generating_particle =['MOCM_H_n_bond','MOCOM','MOCM']
+generating_cluster = [x for x in range(1,3)]
+generating_particle =['MC','MOCM_H_n_bond','MOCM']
 sp_or_opt = 'sp'
 rot_input = 'y'
 pwd = os.getcwd() 
