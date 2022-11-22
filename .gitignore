@@ -133,5 +133,6 @@ PSEUDO
 cleaning.py
 clusters
 benchmark_ds.csv
-*model*
+*.h5
+*.joblib
 *.png
