@@ -15,7 +15,7 @@ p*_name_of_script - Python file with some functions, gathered data, or class tha
 
 stav.py - simple script to automate running VASP calculations
 
-main.ipynb - Jupyter Notebook where everything is running
+main.ipynb - Jupyter Notebook where you can use ML model to predict the energy
 
 Other files:
 
