@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
+import streamlit as st
 from joblib import dump, load
 from sklearn.preprocessing import MinMaxScaler
-import streamlit as st
+
 
 model = load('final_ada_m.joblib')
 
