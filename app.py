@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from joblib import load
+
 from sklearn.preprocessing import MinMaxScaler
 
 
