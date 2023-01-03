@@ -15,7 +15,7 @@ model = load('final_ada_m.joblib')
 
 #data preprocessing
 
-def data_preprocessing():
+def data_preprocessing(first_atom, second_atom, hydrogen, centre_atom):
     if first_atom == 'Cu':
             first_atom = 0
     else:
@@ -63,7 +63,7 @@ if main_menu == 'Specific value':
     
 
 if st.button('Compute'):  
-    data_preprocessing() 
+    data_preprocessing(first_atom, second_atom, hydrogen, centre_atom) 
     data = pd.DataFrame(data=[[
         number_of_nickel,  #number of nickel in cluster 0-13
         centre_atom,  #c_atom, Ni = 1
