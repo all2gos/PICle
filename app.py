@@ -65,11 +65,42 @@ if main_menu == 'Topology':
     output = (CuNi_cluster(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']).creating_db_row(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']))
     
     number_of_nickel = output[0]
-    
+    centre_atom = output[7]  #c_atom, Ni = 1
+    mass_center = float(output[8]) #mass_center 0-0.05071
+    ni_ncentre = output[9][0]  #ni_ncentre
+    ni_centre = output[9][1]   #ni_centre
+    cu_ncentre = output[9][2]
+    cu_centre = output[9][3]
+    ni_0 = output[10][0]
+    ni_8 = output[10][1]
+    ni_17 = output[10][2]
+    ni_25 = output[10][3]
+    ni_33 = output[10][4]
+    ni_42 = output[10][5]
+    ni_50 = output[10][6]
+    nini = output[11][0]
+    cucu = output[11][1]
+    nicu = output[11][2]
 
-    final_value = pd.DataFrame(data = [number_of_nickel])
-    st.write(final_value)
-    st.write(output)
+    hydrogen = st.radio('Is cluster includes hydrogen?',('Yes','No'))
+    first_atom = st.radio('What is the first atom of the cluster to which the molecule attaches?',('Cu','Ni'))
+    second_atom = st.radio('What is the second atom of the cluster to which the molecule attaches?',('Cu','Ni'))
+
+    #data preprocessing
+    if first_atom == 'Cu':
+        first_atom = 0
+    else:
+        first_atom = 1
+    
+    if second_atom == 'Cu':
+        second_atom = 0
+    else:
+        second_atom = 1
+    
+    if hydrogen == 'Yes':
+        hydrogen = 1
+    else:
+        hydrogen = 0  
 
 if st.button('Compute'):   
     data = pd.DataFrame(data=[[
