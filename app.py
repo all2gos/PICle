@@ -13,7 +13,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 model = load('final_ada_m.joblib')
 
-main_menu = st.radio('You can choose the specific topological value or you can just write down topology of clusters',('Specific value','Topology'))
+main_menu = st.radio('You can choose the specific topological value or you can just write down topology of clusters',('Topology','Specific value'))
 
 if main_menu == 'Specific value':
     number_of_nickel = st.slider('Choose number of nickel',0,13,6)
@@ -58,7 +58,10 @@ if main_menu == 'Specific value':
     else:
         centre_atom = 0
 
-
+if main_menu == 'Topology':
+    topology = st.text_input('Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu, Cu')
+    from p3_cuni_class import CuNi_cluster
+    st.write(CuNi_cluster(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']).creating_db_row(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']))
 
 
 if st.button('Compute'):   
