@@ -60,10 +60,9 @@ if main_menu == 'Specific value':
 
 if main_menu == 'Topology':
     st.write('Example topology of cluster is: Cu,Ni,Ni,Cu,Ni,Cu,Cu,Cu,Ni,Cu,Cu,Ni,Cu')
-    topology = st.text_input('Write down the topology of clusters')
-    st.write(topology.split(','))
+    topology = st.text_input('Write down the topology of clusters')    
     from p3_cuni_class import CuNi_cluster
-    output = (CuNi_cluster(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']).creating_db_row(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']))
+    output = (CuNi_cluster(topology.split(',')).creating_db_row(topology.split(',')))
     
     number_of_nickel = output[0]
     centre_atom = output[7]  #c_atom, Ni = 1
