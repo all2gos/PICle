@@ -63,10 +63,31 @@ if main_menu == 'Topology':
     topology = st.text_input('Write down the topology of clusters')
     from p3_cuni_class import CuNi_cluster
     output = (CuNi_cluster(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']).creating_db_row(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']))
+    
     number_of_nickel = output[0]
+    centre_atom,  #c_atom, Ni = 1
+    mass_center,  #mass_center 0-0.05071
+    ni_ncentre,  #ni_ncentre
+    ni_centre,    #ni_centre
+    cu_ncentre,  #cu_ncentre
+    cu_centre,  #cu_centre
+    ni_0,  #0ni
+    ni_8,  #8ni
+    ni_17,    #17ni
+    ni_25,  #25ni
+    ni_33,  #33ni
+    ni_42,  #42ni
+    ni_50,  #50ni
+    nini,  #nini
+    cucu,  #cucu
+    nicu,  #nicu
+    hydrogen,  #if particle has a hydrogen then it is equall to 1
+    first_atom,  #type_of_first_atom_ni
+    second_atom   #type_of_second_atom_ni
 
     final_value = pd.DataFrame(data = [number_of_nickel])
     st.write(final_value)
+    st.write(output)
 
 if st.button('Compute'):   
     data = pd.DataFrame(data=[[
