@@ -125,6 +125,7 @@ if st.button('Compute'):
         first_atom,  #type_of_first_atom_ni
         second_atom   #type_of_second_atom_ni
     ]])
+    st.write(data)
     minmax = pd.DataFrame(data=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[13,1,0.05071,12,13,12,13,12,12,10,10,10,12,12,84,84,52,1,1]])
     scaler = MinMaxScaler()
     scaler.fit(minmax)
