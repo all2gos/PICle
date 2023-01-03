@@ -13,29 +13,6 @@ from sklearn.preprocessing import MinMaxScaler
 
 model = load('final_ada_m.joblib')
 
-#data preprocessing
-
-def data_preprocessing(first_atom, second_atom, hydrogen, centre_atom):
-    if first_atom == 'Cu':
-            first_atom = 0
-    else:
-        first_atom = 1
-    
-    if second_atom == 'Cu':
-        second_atom = 0
-    else:
-        second_atom = 1
-    
-    if hydrogen == 'Yes':
-        hydrogen = 1
-    else:
-        hydrogen = 0
-    
-    if centre_atom == 'Ni':
-        centre_atom = 1
-    else:
-        centre_atom = 0
-
 main_menu = st.radio('You can choose the specific topological value or you can just write down topology of clusters',('Specific value','Topology'))
 
 if main_menu == 'Specific value':
@@ -60,10 +37,31 @@ if main_menu == 'Specific value':
     first_atom = st.radio('What is the first atom of the cluster to which the molecule attaches?',('Cu','Ni'))
     second_atom = st.radio('What is the second atom of the cluster to which the molecule attaches?',('Cu','Ni'))
 
+    #data preprocessing
+    if first_atom == 'Cu':
+        first_atom = 0
+    else:
+        first_atom = 1
     
+    if second_atom == 'Cu':
+        second_atom = 0
+    else:
+        second_atom = 1
+    
+    if hydrogen == 'Yes':
+        hydrogen = 1
+    else:
+        hydrogen = 0
+    
+    if centre_atom == 'Ni':
+        centre_atom = 1
+    else:
+        centre_atom = 0
 
-if st.button('Compute'):  
-    data_preprocessing(first_atom, second_atom, hydrogen, centre_atom) 
+
+
+
+if st.button('Compute'):   
     data = pd.DataFrame(data=[[
         number_of_nickel,  #number of nickel in cluster 0-13
         centre_atom,  #c_atom, Ni = 1
