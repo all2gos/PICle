@@ -59,7 +59,7 @@ if main_menu == 'Specific value':
         centre_atom = 0
 
 if main_menu == 'Topology':
-    st.write('Example topology of cluster is: Cu, Ni, Ni, Cu, Ni, Cu, Cu, Cu, Ni, Cu, Cu, Ni, Cu')
+    st.write('Example topology of cluster is: Cu,Ni,Ni,Cu,Ni,Cu,Cu,Cu,Ni,Cu,Cu,Ni,Cu')
     topology = st.text_input('Write down the topology of clusters')
     st.write(topology.split(','))
     from p3_cuni_class import CuNi_cluster
