@@ -52,6 +52,11 @@ if main_menu == 'Specific value':
         hydrogen = 1
     else:
         hydrogen = 0
+    
+    if centre_atom == 'Ni':
+        centre_atom = 1
+    else:
+        centre_atom = 0
 
 
 if st.button('Compute'):   
