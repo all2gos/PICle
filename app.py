@@ -65,7 +65,7 @@ if main_menu == 'Topology':
     output = (CuNi_cluster(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']).creating_db_row(['Cu', 'Ni', 'Ni', 'Cu', 'Ni', 'Cu', 'Cu', 'Cu', 'Ni', 'Cu', 'Cu', 'Ni', 'Cu']))
     number_of_nickel = output[0]
 
-    final_value = [number_of_nickel]
+    final_value = pd.DataFrame(data = [number_of_nickel])
     st.write(final_value)
 
 if st.button('Compute'):   
