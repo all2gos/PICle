@@ -1,25 +1,14 @@
-# PIClu
-Procedure to Indicate Clusters
+# PICle
 
-a bunch of scripts that can predict the energy of CuNi bimetallic clusters based on machine learning stuff
+PICle (which stands for Procedure to Indicate CLuster Energy) is a code for predicting the energy of clusters composed of copper and nickel using machine learning methods including deep learning
 
-the main goal of this procedure is to select the most attractive configurations of metals to catalyze CO2 transformation into CO/HCOOH automatically
+File legend:
 
-this is quick and no expert knowledge is required!
+*creating_data_sets* directory contains all files associated with the creation of the all.csv file, including files that automate the determination of cluster energy (stav.py and p9_*)
 
-Description:
+*clusters_phd.csv* file contains a collection of bimetallic clusters, the energy of which was determined by a PhD student, in the "conventional way" (standard optimization of systems) . The results contained therein represent a benchmark of the calculations carried out
 
-Python files:
-
-p*_name_of_script - Python file with some functions, gathered data, or class that the main script use to run the main procedure
-
-stav.py - simple script to automate running VASP calculations
-
-main.ipynb - Jupyter Notebook where you can use ML model to predict the energy
-
-Other files:
-
-all.csv - an exported database that include all information about clusters (this will be SQL file the in future)
+*ML_stuff.ipynb* file performs, as the name implies, all operations related to machine learning
 
 
 
